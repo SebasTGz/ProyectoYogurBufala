@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Personaliza Tu Yogur</h2>
+<form method="POST" action="/personaliza">
+    <div>
+        <label for="base">Base del Yogur</label>
+        <select name="base" id="base" required>
+            <option value="natural">Natural</option>
+            <option value="endulzado">Endulzado</option>
+            <option value="light">Light</option>
+        </select>
+    </div>
+    <div>
+        <label for="sabor">Sabor</label>
+        <select name="sabor" id="sabor" required>
+            <option value="mora">Mora</option>
+            <option value="café">Café</option>
+            <option value="guanábana">Guanábana</option>
+            <option value="piña">Piña</option>
+        </select>
+    </div>
+    <div>
+        <label for="ingredientes">Ingredientes Extra</label>
+        <input type="text" name="ingredientes" id="ingredientes" placeholder="Ej: Granola, Miel, Almendras">
+    </div>
+    <button type="submit" class="btn">Crear Mi Yogur</button>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Auténtico Yogur Griego de Búfala</h2>
+<p>Elige entre sabores únicos o crea tu propia combinación.</p>
+<a href="/sabores" class="btn">Descubre nuestros sabores</a>
+<div class="productos">
+    {% for producto in productos %}
+        <div class="producto">
+            <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
+            <h3>{{ producto.nombre }}</h3>
+            <p>{{ producto.descripcion }}</p>
+            <p>${{ producto.precio }}</p>
+            <button>Agregar al carrito</button>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

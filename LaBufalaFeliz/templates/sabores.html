@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Nuestros Sabores</h2>
+<div class="productos">
+    {% for sabor in sabores %}
+    <div class="producto">
+        <img src="{{ sabor.imagen }}" alt="{{ sabor.nombre }}">
+        <h3>{{ sabor.nombre }}</h3>
+        <p>{{ sabor.descripcion }}</p>
+        <p>${{ sabor.precio }}</p>
+        <a href="/agregar/{{ sabor.id }}" class="btn">Agregar al Carrito</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
