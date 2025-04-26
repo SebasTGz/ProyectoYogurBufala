@@ -1,6 +1,8 @@
 from flask import Flask, render_template, redirect, request, url_for
 from config import Config
 
+# Crear la aplicación Flask
+
 app = Flask(__name__)
 
 app.config.from_object(Config)
