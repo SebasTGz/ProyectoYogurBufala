@@ -1,3 +1,8 @@
+class Config:
+    SECRET_KEY = 'tu_clave_secreta_aqui'
+    STATIC_FOLDER = 'static'
+    TEMPLATES_FOLDER = 'templates'
+
 class BaseConfig:
     """Base configuration."""
     DEBUG = False
@@ -32,3 +37,5 @@ def get_config_by_name(config_name):
         return TestingConfig()
     else:
         return DevelopmentConfig()
+
+    
