@@ -24,7 +24,7 @@ def create_app(config_name=None) -> Flask:
     @app.route('/sabores')
     def sabores():
         sabores = [
-            {"id": 1, "nombre": "Mora", "descripcion": "Delicioso yogurt de mora", "precio": 5.0, "imagen": "/static/images/mora.jpg"},
+            {"id": 1, "nombre": "Mora", "descripcion": "Delicioso yogurt de mora", "precio": 5.0, "imagen": "/static/images/g "},
             {"id": 2, "nombre": "Café", "descripcion": "Aromático yogurt de café", "precio": 5.5, "imagen": "/static/images/cafe.jpg"},
         ]
         return render_template('sabores.html', sabores=sabores)
