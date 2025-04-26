@@ -1,29 +1,25 @@
 {% extends 'base.html' %}
 
+{% block title %}Personaliza - La Búfala Feliz{% endblock %}
+
 {% block content %}
-<h2>Personaliza Tu Yogur</h2>
-<form method="POST" action="/personaliza">
-    <div>
-        <label for="base">Base del Yogur</label>
-        <select name="base" id="base" required>
-            <option value="natural">Natural</option>
-            <option value="endulzado">Endulzado</option>
-            <option value="light">Light</option>
+<h2 class="text-center mb-4">Personaliza tu Yogurt</h2>
+<form action="{{ url_for('personaliza') }}" method="POST" class="mx-auto" style="max-width: 500px;">
+    <div class="mb-3">
+        <label for="base" class="form-label">Elige tu base:</label>
+        <select id="base" name="base" class="form-select">
+            <option value="yogurt">Yogurt</option>
+            <option value="helado">Helado</option>
         </select>
     </div>
-    <div>
-        <label for="sabor">Sabor</label>
-        <select name="sabor" id="sabor" required>
-            <option value="mora">Mora</option>
-            <option value="café">Café</option>
-            <option value="guanábana">Guanábana</option>
-            <option value="piña">Piña</option>
-        </select>
+    <div class="mb-3">
+        <label for="sabor" class="form-label">Elige tu sabor:</label>
+        <input type="text" id="sabor" name="sabor" class="form-control" placeholder="Ejemplo: Fresa">
     </div>
-    <div>
-        <label for="ingredientes">Ingredientes Extra</label>
-        <input type="text" name="ingredientes" id="ingredientes" placeholder="Ej: Granola, Miel, Almendras">
+    <div class="mb-3">
+        <label for="ingredientes" class="form-label">Ingredientes extras:</label>
+        <textarea id="ingredientes" name="ingredientes" class="form-control" rows="3"></textarea>
     </div>
-    <button type="submit" class="btn">Crear Mi Yogur</button>
+    <button type="submit" class="btn btn-success">Añadir al carrito</button>
 </form>
 {% endblock %}

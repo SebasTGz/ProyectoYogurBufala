@@ -1,28 +1,45 @@
 {% extends 'base.html' %}
 
+{% block title %}Carrito - La Búfala Feliz{% endblock %}
+
 {% block content %}
-<h2>Carrito de Compras</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Total</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in carrito %}
-        <tr>
-            <td>{{ item.nombre }}</td>
-            <td>{{ item.cantidad }}</td>
-            <td>${{ item.precio }}</td>
-            <td>${{ item.precio * item.cantidad }}</td>
-            <td><button>Eliminar</button></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<a href="/checkout" class="btn">Pagar</a>
+<h2 class="text-center mb-4">Tu Carrito</h2>
+
+{% if carrito %}
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carrito %}
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.precio }}</td>
+                <td>${{ item.cantidad * item.precio }}</td>
+                <td>
+                    <form action="{{ url_for('eliminar_del_carrito', producto_id=item.id) }}" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="text-end">
+    <h5>Total: ${{ total }}</h5>
+    <a href="{{ url_for('checkout') }}" class="btn btn-success">Proceder al Pago</a>
+</div>
+{% else %}
+<p class="text-center">Tu carrito está vacío.</p>
+<a href="{{ url_for('sabores') }}" class="btn btn-primary">Explorar Sabores</a>
+{% endif %}
 {% endblock %}

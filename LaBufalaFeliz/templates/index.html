@@ -1,18 +1,11 @@
 {% extends 'base.html' %}
 
+{% block title %}Inicio - La Búfala Feliz{% endblock %}
+
 {% block content %}
-<h2>Auténtico Yogur Griego de Búfala</h2>
-<p>Elige entre sabores únicos o crea tu propia combinación.</p>
-<a href="/sabores" class="btn">Descubre nuestros sabores</a>
-<div class="productos">
-    {% for producto in productos %}
-        <div class="producto">
-            <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
-            <h3>{{ producto.nombre }}</h3>
-            <p>{{ producto.descripcion }}</p>
-            <p>${{ producto.precio }}</p>
-            <button>Agregar al carrito</button>
-        </div>
-    {% endfor %}
+<div class="text-center">
+    <h2>Bienvenido a La Búfala Feliz</h2>
+    <p>Descubre nuestros deliciosos yogures griegos elaborados con leche de búfala.</p>
+    <a href="{{ url_for('sabores') }}" class="btn btn-primary">Ver Sabores</a>
 </div>
 {% endblock %}

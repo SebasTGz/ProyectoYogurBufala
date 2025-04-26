@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block title %}Sabores - La Búfala Feliz{% endblock %}
 
-<h2>Nuestros Sabores</h2>
-<div class="productos">
+{% block content %}
+<h2 class="text-center mb-4">Nuestros Sabores</h2>
+<div class="row">
     {% for sabor in sabores %}
-    <div class="producto">
-        <img src="{{ sabor.imagen }}" alt="{{ sabor.nombre }}">
-        <h3>{{ sabor.nombre }}</h3>
-        <p>{{ sabor.descripcion }}</p>
-        <p>${{ sabor.precio }}</p>
-        <a href="/agregar/{{ sabor.id }}" class="btn">Agregar al Carrito</a>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img src="{{ sabor.imagen }}" class="card-img-top" alt="{{ sabor.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ sabor.nombre }}</h5>
+                <p class="card-text">{{ sabor.descripcion }}</p>
+                <p class="text-muted">Precio: ${{ sabor.precio }}</p>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>
 {% endblock %}
+
