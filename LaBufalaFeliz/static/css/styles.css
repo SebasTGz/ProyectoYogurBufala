@@ -42,6 +42,14 @@ h1, h2, h3 {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
+/*TAMAÑO IMAGENES*/
+.card-img-top {
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 50%;
+    position: center;
+    margin: 0 auto;
+}
+
 /* Botones */
 .btn-primary {
     background-color: #5355c5;
@@ -49,8 +57,8 @@ h1, h2, h3 {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
+    background-color: #004085;
+    border-color: #0056b3;
 }
 
 /* Footer */

@@ -24,10 +24,10 @@ def create_app(config_name=None) -> Flask:
     @app.route('/sabores')
     def sabores():
         sabores = [
-            {"id": 1, "nombre": "Mora", "descripcion": "Delicioso yogurt de mora", "precio": 12000, "imagen": "/static/imges/cafe.jpg"},
-            {"id": 2, "nombre": "Café", "descripcion": "Aromático yogurt de café", "precio": 14000, "imagen": "/static/imges/cafe.jpg"},
-            {"id": 3, "nombre": "Guanabana", "descripcion": "Rico yogurt de guanabana", "precio": 15000, "imagen": "/static/imges/cafe.jpg"},
-            {"id": 4, "nombre": "Piña", "descripcion": "Refrescante yogurt de piña", "precio": 16000, "imagen": "/static/imges/cafe.jpg"},
+            {"id": 1, "nombre": "Mora", "descripcion": "Delicioso yogurt de mora", "precio": 12000, "imagen": "/static/imges/yogur_real.png"},
+            {"id": 2, "nombre": "Café", "descripcion": "Aromático yogurt de café", "precio": 14000, "imagen": "/static/imges/yogur_real.png"},
+            {"id": 3, "nombre": "Guanabana", "descripcion": "Rico yogurt de guanabana", "precio": 15000, "imagen": "/static/imges/yogur_real.png"},
+            {"id": 4, "nombre": "Piña", "descripcion": "Refrescante yogurt de piña", "precio": 16000, "imagen": "/static/imges/yogur_real.png"},
         ]
         return render_template('sabores.html', sabores=sabores)
 
