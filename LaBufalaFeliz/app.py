@@ -1,4 +1,18 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask
+from app.config.config import get_config_by_name
+from app.initialize_functions import initialize_route, initialize_db, initialize_swagger
+
+def create_app(config=None) -> Flask:
+    """
+    Create a Flask application.
+
+    Args:
+        config: The configuration object to use.
+
+    Returns:
+        A Flask application instance.
+    """
+    from flask import Flask, render_template, redirect, request, url_for
 from config import Config
 
 # Crear la aplicación Flask
@@ -52,3 +66,4 @@ def carrito():
 if __name__ == '__main__':
     app.run(debug=True)
 
+    return app
