@@ -1,32 +1,41 @@
 /* Ajustes generales */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #d9e2f7; /* Color de fondo claro */
+    background: url("../images/fondo.png") no-repeat center center fixed;
+    background-size: cover;
     color: #141414; /* Color del texto principal */
     padding-top: 4.5rem; /* Espacio para el navbar fijo */
 }
 
-/* Estilo personalizado para el navbar */
+
 .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
     color: #5a5a5a !important;
 }
 
+/* Estilo personalizado para el navbar */
 .navbar-nav .nav-link {
-    font-size: 1rem;
-    font-weight: 500;
+    
     margin-right: 10px;
+    font-family: 'Abril Fatface', cursive;  /* Cambiar la fuente */
+    font-weight: 30px;  /* Cambiar el tamaño de la fuente */
+    font-size: 19px;
+    color: #ffffff !important;
 }
 
 .navbar-nav .nav-link:hover {
     color: #5e2494 !important; /* Azul destacado al pasar el mouse */
 }
 
+
 /* Títulos */
 h1, h2, h3 {
     margin-top: 20px;
-    color: #343a40;
+    font-family: 'Abril Fatface', cursive !important;  /* Cambiar la fuente */
+    font-size: 80px !important;  /* Cambiar el tamaño de la fuente */
+    color: #0a0101 !important;   /* Cambiar el color de la fuente */
+    text-shadow: 3px 3px 6px white, -3px -3px 6px white, 3px -3px 6px white, -3px 3px 6px white;  /* Borde blanco más grueso */
     text-align: center;
 }
 
@@ -82,3 +91,26 @@ footer {
 .section {
     padding: 40px 20px;
 }
+
+.paragraph-box {
+    border: 2px solid #ccc; /* Borde del cuadro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    background-color: #f9f9f9; /* Fondo del cuadro */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    font-family: Arial, sans-serif; /* Cambiar la fuente si es necesario */
+    font-weight: bold; /* Aplica negrilla */
+    font-size: 20px; /* Tamaño de la fuente */ 
+    
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px; /* Define un alto específico si es necesario */
+    margin: 0 auto; /* Centra horizontalmente el contenedor */
+}
+
+
