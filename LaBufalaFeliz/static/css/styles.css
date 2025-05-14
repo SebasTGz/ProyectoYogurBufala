@@ -7,6 +7,10 @@ body {
     padding-top: 4.5rem; /* Espacio para el navbar fijo */
 }
 
+.custom-bg {
+    background-color: #a4d8ff; /* Cambia este valor por el color que quieras */
+}
+
 
 .navbar-brand {
     font-weight: bold;
@@ -21,7 +25,8 @@ body {
     font-family: 'Abril Fatface', cursive;  /* Cambiar la fuente */
     font-weight: 30px;  /* Cambiar el tamaño de la fuente */
     font-size: 19px;
-    color: #ffffff !important;
+    text-shadow: 3px 3px 6px white, -3px -3px 6px white, 3px -3px 6px white, -3px 3px 6px white;  /* Borde blanco más grueso */
+    color: #0f0f0f !important;
 }
 
 .navbar-nav .nav-link:hover {
@@ -101,7 +106,7 @@ footer {
     font-family: Arial, sans-serif; /* Cambiar la fuente si es necesario */
     font-weight: bold; /* Aplica negrilla */
     font-size: 20px; /* Tamaño de la fuente */ 
-    
+
 }
 
 .center-content {
