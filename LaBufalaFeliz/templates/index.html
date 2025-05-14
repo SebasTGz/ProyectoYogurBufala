@@ -5,8 +5,33 @@
 {% block content %}
 <div class="text-center">
     <h2>Bienvenido a La Búfala Feliz</h2>
-    <p>Descubre nuestros deliciosos yogures griegos elaborados con leche de búfala.</p>
-    <a href="{{ url_for('sabores') }}" class="btn btn-primary">Ver Sabores</a>
-    <img src="{{ url_for('static', filename='imgen/yogur de internet.png') }}" alt="Yogur Griego" class="img-fluid mt-4">
+    <p>
+        La Búfala Feliz es un yogur probiótico y semi descremado, extremadamente rico en calcio y fósforo, 
+        con menos colesterol y sodio que el yogur de vaca. Ofrece el doble de proteínas, más vitaminas B2, B12, 
+        potasio y magnesio, ayudando a prevenir la osteoporosis y promoviendo una alimentación saludable.
+    </p>
+    <img src="{{ url_for('static', filename='images/yogurinicio.png') }}" 
+    alt="Yogur" class="img-fluid my-3" style="max-width: 500px;">
+
+<a href="{{ url_for('sabores') }}" class="btn btn-primary">Ver Sabores</a> 
 </div>
+<div class="container mt-5">
+    <h3 class="text-center">Finca Vallecitos, vereda La Argentina</h3>
+    <div class="text-center mt-4">
+        <img src="{{ url_for('static', filename='images/bufalaenfinca.jpg') }}" 
+             alt="Finca Vallecitos" class="img-fluid rounded shadow-lg mb-4" style="max-width: 100%; height: auto;">
+    </div>
+    <p class="text-center">
+        Agropecuaria Las Cascasas S.A.S opera la finca Vallecitos, ubicada en la vereda La Argentina de Santa Isabel, 
+        Tolima, Colombia, donde se crían búfalas y otros animales con un enfoque sostenible. De allí obtenemos leche de 
+        alta calidad para la elaboración de nuestro yogur La Búfala Feliz, un yogur probiótico semi descremado, lleno de 
+        beneficios para la salud y producido con dedicación y esmero.
+    </p>
+    <p class="text-center">
+        Elaboramos cada yogur con amor, cuidando cada detalle del proceso para garantizar un producto nutritivo y delicioso. 
+        Aunque ofrecemos pocos sabores, brindamos la posibilidad de personalizarlo según los gustos de nuestros clientes. 
+        Nuestro compromiso es ofrecer alimentos saludables, naturales y frescos, impulsando una producción ética y responsable.
+    </p>
+</div>
+
 {% endblock %}

@@ -1,7 +1,7 @@
 /* Ajustes generales */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #d18649; /* Color de fondo claro */
+    background-color: #d9e2f7; /* Color de fondo claro */
     color: #141414; /* Color del texto principal */
     padding-top: 4.5rem; /* Espacio para el navbar fijo */
 }
@@ -57,8 +57,8 @@ h1, h2, h3 {
 }
 
 .btn-primary:hover {
-    background-color: #004085;
-    border-color: #0056b3;
+    background-color: #8bbcf0;
+    border-color: #a3c5ea;
 }
 
 /* Footer */
@@ -75,7 +75,7 @@ footer {
 }
 
 .form-control:focus {
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 5px rgba(55, 55, 55, 0.5);
 }
 
 /* Espaciado adicional */
