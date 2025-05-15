@@ -4,6 +4,28 @@
 
 {% block content %}
 <h2 class="text-center">Yogurt Dietético</h2>
-<p class="text-center">Nuestra opción dietética es perfecta para disfrutar sin culpas.</p>
-{% endblock %}
+<p class="text-center">Nuestra opción dietética es perfecta para disfrutar sin culpas.
+    <br>Yogur Saludable, natural, sin azucares.
+</p>
 
+<div class="row">
+    {% for dietetico in dieteticos %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img src="{{ dietetico.imagen }}" class="card-img-top" alt="{{ dietetico.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ dietetico.nombre }}</h5>
+                <p class="card-text">{{ dietetico.descripcion }}</p>
+                <p class="text-muted">Precio: ${{ dietetico.precio }}</p>
+                <!--BOTONES-->
+                <a href="{{url_for('carrito')}}" class="btn btn-primary">Comprar</a>
+                <button type="submit">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -49,17 +49,27 @@ h1, h2, h3 {
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 10px auto; /* Centra la tarjeta horizontalmente */
+    width: 90%; /* Ancho de la tarjeta */
+    max-width: 500px; /* Ancho máximo de la tarjeta */
+    background-color: #eef5b1; /* Color de fondo de la tarjeta */
+    border: 2px solid #f0f0f0; /* Borde de la tarjeta */
+    padding: 10px; /* Espaciado interno de la tarjeta */
+    font-family: 'Arial', cursive; /* Cambiar la fuente */
+    font-size: 16px; /* Cambiar el tamaño de la fuente */  
+    font-weight: bold; /* Cambiar el peso de la fuente */
+    color: #5e2494; /* Color del texto de la tarjeta */
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.10);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 /*TAMAÑO IMAGENES*/
 .card-img-top {
     border-radius: 0.5rem 0.5rem 0 0;
-    width: 50%;
+    width: 70%;
     position: center;
     margin: 0 auto;
 }
@@ -117,5 +127,64 @@ footer {
     height: 300px; /* Define un alto específico si es necesario */
     margin: 0 auto; /* Centra horizontalmente el contenedor */
 }
+/*CARRITO*/
+.carrito-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
 
+.productos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
+.producto {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.imagen-producto {
+    width: 120px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.detalles {
+    flex-grow: 1;
+}
+
+.total {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: right;
+}
+
+.vaciar-btn {
+    margin-top: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.vaciar-btn:hover {
+    background-color: #ff1a1a;
+}
+/* Estilo para el botón de eliminar */
+.eliminar-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}   

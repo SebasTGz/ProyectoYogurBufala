@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 from config import Config
+from vista.carrito import carrito_bp
 
 def create_app(config_name=None) -> Flask:
     """
@@ -11,7 +12,12 @@ def create_app(config_name=None) -> Flask:
     Returns:
         Una instancia de Flask configurada.
     """
+    #Configuración de Clave Secreta
     app = Flask(__name__)
+    app.secret_key = 'segura_1436'
+
+    # Registrar blueprint
+    app.register_blueprint(carrito_bp) 
 
     # Configuración de la aplicación
     app.config.from_object(Config)
@@ -28,8 +34,7 @@ def create_app(config_name=None) -> Flask:
             {"id": 1, "nombre": "Mora", "descripcion": "Delicioso yogurt de mora", "precio": 12000, "imagen": "/static/images/yogur_real.png"},
             {"id": 2, "nombre": "Café", "descripcion": "Aromático yogurt de café", "precio": 14000, "imagen": "/static/images/yogur_real.png"},
             {"id": 3, "nombre": "Guanabana", "descripcion": "Rico yogurt de guanabana", "precio": 15000, "imagen": "/static/images/yogur_real.png"},
-            {"id": 4, "nombre": "Piña", "descripcion": "Refrescante yogurt de piña", "precio": 16000, "imagen": "/static/images/yogur_real.png"},
-
+            {"id": 4, "nombre": "Piña", "descripcion": "Delicioso yogurt de piña", "precio": 16000, "imagen": "/static/images/yogur_real.png"}
         ]
         return render_template('sabores.html', sabores=sabores)
 
@@ -44,7 +49,13 @@ def create_app(config_name=None) -> Flask:
 
     @app.route('/dietetico')
     def dietetico():
-        return render_template('dietetico.html')
+
+        dieteticos = [
+            {"nombre": "Dietético", "descripcion": "Yogur Saludable, bajo en calorias", 
+            "precio": 16500, 
+            "imagen": url_for('static', filename='images/yogur_real.png')}
+        ]
+        return render_template('dietetico.html', dieteticos=dieteticos)
 
     @app.route('/login', methods=['GET', 'POST'])
     def login():

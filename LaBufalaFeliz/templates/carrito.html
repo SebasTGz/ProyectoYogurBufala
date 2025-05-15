@@ -3,43 +3,54 @@
 {% block title %}Carrito - La Búfala Feliz{% endblock %}
 
 {% block content %}
-<h2 class="text-center mb-4">Tu Carrito</h2>
 
-{% if carrito %}
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in carrito %}
-            <tr>
-                <td>{{ item.nombre }}</td>
-                <td>{{ item.cantidad }}</td>
-                <td>${{ item.precio }}</td>
-                <td>${{ item.cantidad * item.precio }}</td>
-                <td>
-                    <form action="{{ url_for('eliminar_del_carrito', producto_id=item.id) }}" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-<div class="text-end">
-    <h5>Total: ${{ total }}</h5>
-    <a href="{{ url_for('checkout') }}" class="btn btn-success">Proceder al Pago</a>
-</div>
+<h2 class="text-center mb-4">Tu Carrito de Compras</h2>
+
+{% if carrito and carrito|length > 0 %}
+    <div class="row">
+        {% for producto in carrito %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" class="card-img-top" style="max-height:150px;object-fit:contain;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.descripcion }}</p>
+                        <p class="card-text fw-bold">Precio: ${{ producto.precio }}</p>
+                        <p class="card-text">Cantidad: {{ producto.cantidad }}</p>
+                        <div class="d-flex justify-content-between">
+                            <!-- Disminuir cantidad -->
+                            <form action="{{ url_for('carrito.disminuir_cantidad', index=loop.index0) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-secondary btn-sm">-</button>
+                            </form>
+                            <!-- Aumentar cantidad -->
+                            <form action="{{ url_for('carrito.aumentar_cantidad', index=loop.index0) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-secondary btn-sm">+</button>
+                            </form>
+                            <!-- Quitar producto -->
+                            <form action="{{ url_for('carrito.quitar_producto', index=loop.index0) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Quitar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="text-end mt-3">
+        {% set total = carrito | sum(attribute='precio_total') %}
+        <h5 class="text-warning" style="background: #212529; display:inline-block ; padding: 6px 15px; border-radius: 8px;">
+        Total: ${{ total }}
+        </h5>
+        <form action="{{ url_for('carrito.vaciar_carrito') }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Vaciar Carrito</button>
+        </form>
+        <a href="{{ url_for('home') }}" class="btn btn-success">Proceder al Pago</a>
+    </div>
 {% else %}
-<p class="text-center">Tu carrito está vacío.</p>
-<a href="{{ url_for('sabores') }}" class="btn btn-primary">Explorar Sabores</a>
+    <p class="text-center fs-3 fw-bold">Tu carrito está vacío.</p>
+    <div class="text-center">
+        <a href="{{ url_for('sabores') }}" class="btn btn-primary">Explorar Sabores</a>
+    </div>
 {% endif %}
+
 {% endblock %}
