@@ -7,28 +7,30 @@
 <div class="row">
     {% for sabor in sabores %}
     <div class="col-md-4 mb-4">
-        <div class="card">
-            <!-- Poner el boton dentro de un formulario en el bucle de sabores... -->
-            <form action="{{ url_for('carrito.agregar_carrito') }}" method="POST">
-                <input type="hidden" name="nombre" value="{{ sabor.nombre }}">
-                <input type="hidden" name="descripcion" value="{{ sabor.descripcion }}">
-                <input type="hidden" name="precio" value="{{ sabor.precio }}">
-                <input type="hidden" name="imagen" value="{{ sabor.imagen }}">
-                <button type="submit" class="btn btn-primary">Comprar</button>
-            </form>
-        </div> 
-
+        <div class="card h-100">
+            <img src="{{ sabor.imagen }}" class="card-img-top" alt="{{ sabor.nombre }}">
+            <!--Se agregaron estos elementos dentro de una tarjeta card para no ocultar la información.-->
+            <div class="card-body">
+                <h5 class="card-title">{{ sabor.nombre }}</h5>
+                <p class="card-text">{{ sabor.descripcion }}</p>
+                <p class="text-muted">Precio: ${{ sabor.precio }}</p>
+                <form action="{{ url_for('carrito.agregar_carrito') }}" method="POST">
+                    <input type="hidden" name="nombre" value="{{ sabor.nombre }}">
+                    <input type="hidden" name="descripcion" value="{{ sabor.descripcion }}">
+                    <input type="hidden" name="precio" value="{{ sabor.precio }}">
+                    <input type="hidden" name="imagen" value="{{ sabor.imagen }}">
+                    <button type="submit" class="btn btn-primary">Comprar</button>
+                </form>
+            </div>
+        </div>
     </div>
-
     {% endfor %}
-
 </div>
-
 {% endblock %}
 
 
 
-<!--DEJAR AQUI-->
+<!--DEJAR AQUI POR SI ACASO-->
             <!-- <img src="{{ sabor.imagen }}" class="card-img-top" alt="{{ sabor.nombre }}">
             
             <div class="card-body">

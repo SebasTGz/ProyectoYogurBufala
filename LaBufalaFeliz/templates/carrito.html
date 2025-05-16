@@ -39,7 +39,7 @@
     <div class="text-end mt-3">
         {% set total = carrito | sum(attribute='precio_total') %}
         <h5 class="text-warning" style="background: #212529; display:inline-block ; padding: 6px 15px; border-radius: 8px;">
-        Total: ${{ total }}
+        Total: ${{ "{:,.1f}".format(total).replace(",", "X").replace(".", ",").replace("X", ".") }}
         </h5>
         <form action="{{ url_for('carrito.vaciar_carrito') }}" method="POST" style="display:inline;">
             <button type="submit" class="btn btn-danger">Vaciar Carrito</button>

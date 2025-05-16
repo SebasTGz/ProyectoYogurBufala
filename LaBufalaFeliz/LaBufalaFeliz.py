@@ -34,7 +34,8 @@ def create_app(config_name=None) -> Flask:
             {"id": 1, "nombre": "Mora", "descripcion": "Delicioso yogurt de mora", "precio": 12000, "imagen": "/static/images/yogur_real.png"},
             {"id": 2, "nombre": "Café", "descripcion": "Aromático yogurt de café", "precio": 14000, "imagen": "/static/images/yogur_real.png"},
             {"id": 3, "nombre": "Guanabana", "descripcion": "Rico yogurt de guanabana", "precio": 15000, "imagen": "/static/images/yogur_real.png"},
-            {"id": 4, "nombre": "Piña", "descripcion": "Delicioso yogurt de piña", "precio": 16000, "imagen": "/static/images/yogur_real.png"}
+            {"id": 4, "nombre": "Piña", "descripcion": "Delicioso yogurt de piña", "precio": 16000, "imagen": "/static/images/yogur_real.png"},
+            {"id": 5, "nombre": "Dietético", "descripcion": "Yogur Saludable, bajo en calorias", "precio": 16500, "imagen": "/static/images/yogur_real.png"}
         ]
         return render_template('sabores.html', sabores=sabores)
 
@@ -47,15 +48,16 @@ def create_app(config_name=None) -> Flask:
             return redirect(url_for('carrito'))
         return render_template('personaliza.html')
 
-    @app.route('/dietetico')
-    def dietetico():
+    '''DEJAR AQUÍ COMENTADO'''
+    # @app.route('/dietetico')
+    # def dietetico():
 
-        dieteticos = [
-            {"nombre": "Dietético", "descripcion": "Yogur Saludable, bajo en calorias", 
-            "precio": 16500, 
-            "imagen": url_for('static', filename='images/yogur_real.png')}
-        ]
-        return render_template('dietetico.html', dieteticos=dieteticos)
+    #     dieteticos = [
+    #         {"nombre": "Dietético", "descripcion": "Yogur Saludable, bajo en calorias", 
+    #         "precio": 16500, 
+    #         "imagen": url_for('static', filename='images/yogur_real.png')}
+    #     ]
+    #     return render_template('dietetico.html', dieteticos=dieteticos)
 
     @app.route('/login', methods=['GET', 'POST'])
     def login():

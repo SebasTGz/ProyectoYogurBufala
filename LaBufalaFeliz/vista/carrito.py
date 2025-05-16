@@ -30,10 +30,6 @@ def agregar_carrito():
         carrito.append(productos)
     session['carrito'] = carrito
 
-    # carrito = session['carrito']
-    # carrito.append(productos)
-    # session['carrito'] = carrito
-
     return redirect(url_for('carrito.ver_carrito'))
 
 @carrito_bp.route('/carrito')
