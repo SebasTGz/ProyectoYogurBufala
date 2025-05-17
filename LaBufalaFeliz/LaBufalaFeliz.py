@@ -1,14 +1,22 @@
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from config import Config
 from vista.carrito import carrito_bp
+import sqlite3
+import os
+
+def get_db_connection():
+    db_path = os.path.join(os.path.dirname(__file__), 'usuarios.db')
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+db_path = os.path.join(os.path.dirname(__file__), 'usuarios.db')
 
 def create_app(config_name=None) -> Flask:
     """
     Crea una aplicación Flask usando una configuración específica.
-
     Args:
         config_name: Nombre de la configuración a usar.
-
     Returns:
         Una instancia de Flask configurada.
     """
@@ -48,7 +56,48 @@ def create_app(config_name=None) -> Flask:
             return redirect(url_for('carrito'))
         return render_template('personaliza.html')
 
+    # REGISTRO DE USUARIOS
+    @app.route('/register', methods=['GET', 'POST'])
+    def register():
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+            conn = get_db_connection()
+            try:
+                conn.execute('INSERT INTO usuarios (username, password) VALUES (?, ?)', (username, password))
+                conn.commit()
+                flash('Usuario registrado exitosamente. Ahora puedes iniciar sesión.', 'success')
+                return redirect(url_for('login'))
+            except sqlite3.IntegrityError:
+                flash('El nombre de usuario ya existe.', 'danger')
+            finally:
+                conn.close()
+        return render_template('registrar.html')
 
+    # LOGIN DE USUARIOS
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+            conn = get_db_connection()
+            user = conn.execute('SELECT * FROM usuarios WHERE username = ? AND password = ?', (username, password)).fetchone()
+            conn.close()
+            if user:
+                session['usuario'] = username
+                flash('¡Bienvenido, {}!'.format(username), 'success')
+                return redirect(url_for('home'))
+            else:
+                flash('Usuario o contraseña incorrectos', 'danger')
+        return render_template('login.html')
+
+    @app.route('/logout')
+    def logout():
+        session.pop('usuario', None)
+        flash('Sesión cerrada correctamente.', 'info')
+        return redirect(url_for('login'))
+
+    #Dejar por si falla
     # @app.route('/dietetico')
     # def dietetico():
 
@@ -59,13 +108,13 @@ def create_app(config_name=None) -> Flask:
     #     ]
     #     return render_template('dietetico.html', dieteticos=dieteticos)
 
-    @app.route('/login', methods=['GET', 'POST'])
-    def login():
-        if request.method == 'POST':
-            username = request.form['username']
-            password = request.form['password']
-            return redirect(url_for('home'))
-        return render_template('login.html')
+    # @app.route('/login', methods=['GET', 'POST'])
+    # def login():
+    #     if request.method == 'POST':
+    #         username = request.form['username']
+    #         password = request.form['password']
+    #         return redirect(url_for('home'))
+    #     return render_template('login.html')
 
     @app.route('/carrito')
     def carrito():

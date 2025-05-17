@@ -19,21 +19,42 @@
             <h1 class="h2">La Búfala Feliz</h1>
         <!-- Imagen debajo del título -->
         <img src="{{ url_for('static', filename='images/LOGO.png') }}" 
-             alt="Logo La Búfala Feliz" 
-             class="img-fluid my-3" 
-             style="max-width: 380px;">
+            alt="Logo La Búfala Feliz" 
+            class="img-fluid my-3" 
+            style="max-width: 380px;">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
+                        <!-- <ul class="navbar-nav mx-auto">
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Inicio</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('sabores') }}">Sabores</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('personaliza') }}">Personalizado</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('carrito') }}">Carrito</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Iniciar Sesión</a></li>
+                        </ul> -->
+
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('sabores') }}">Sabores</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('personaliza') }}">Personalizado</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('carrito') }}">Carrito</a></li>
+                            {% if 'usuario' in session %}
+                                <li class="nav-item">
+                                    <span class="fw-bold text-success nav-link">
+                                        Bienvenido, {{ session['usuario'] }}
+                                    </span>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link text-warning" href="{{ url_for('login') }}">Iniciar Sesión</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -52,5 +73,20 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+<!--Mostrar mensajes de Error para verificar-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="container mt-3">
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}
+
 </html>
 
